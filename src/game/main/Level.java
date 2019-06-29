@@ -10,7 +10,7 @@ import static game.scenes.GameScene.Y_OFFSET;
 public class Level {
   public static Level currentLevel = null;
 
-  public Block[][] blocks = new Block[12][12];
+  private final Block[][] blocks = new Block[12][12];
 
   public Level() {
     for (int i = 0; i < 12; i++) {
@@ -21,14 +21,14 @@ public class Level {
   }
 
   public static class Block {
-    public int variant;
-    public int x = 0;
-    public int y = 0;
+    public final int variant;
+    public final int x;
+    public final int y;
     public double z = 0;
     public double zSpeed = 0;
     public boolean falling = false;
 
-    public Block(int x, int y) {
+    Block(int x, int y) {
       this.x = x;
       this.y = y;
       variant = RandomUtil.randomInt(1, 4);

@@ -1,6 +1,5 @@
 package game.objects;
 
-import davecode.log.Logger;
 import davecode.util.MathUtil;
 import davecode.util.RandomUtil;
 import game.main.GameItem;
@@ -10,21 +9,22 @@ import java.awt.*;
 
 // Player Explody Bits
 public class MenuParticle extends GameItem {
-  public float x;
-  public float y;
-  public float z;
-  public static final Color color = new Color(0xFF0000);
-  public static final Color color2 = new Color(0xFFCA00);
-  public float red = color.getRed();
-  public float green = color.getGreen();
-  public float blue = color.getBlue();
-  public int size;
+  private float x;
+  private float y;
+  private float z;
+  private static final Color color = new Color(0xFF0000);
+  private static final Color color2 = new Color(0xFFCA00);
+  private float red = color.getRed();
+  private float green = color.getGreen();
+  private float blue = color.getBlue();
+  private int size;
   public boolean dead = false;
-  public float opacity = 1f;
+  private float opacity = 1f;
   private float mz = 0;
   private float mmz = 0;
   private float angle = 0;
 
+  @SuppressWarnings("unused") // Required for Resource Preloader
   public MenuParticle() {}
   public MenuParticle(double x, double y) {
     this.x = (float) (x + RandomUtil.randomFloat(0, 560) - 280f);

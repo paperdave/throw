@@ -8,9 +8,9 @@ import java.util.ArrayList;
 // Renders A Star Background
 public class StarScene extends Renderable {
   private int starScale;
-  private ArrayList<Star> stars = new ArrayList<>();
+  private final ArrayList<Star> stars = new ArrayList<>();
 
-  int opacity = 0;
+  private int opacity = 0;
 
   // Preload is to load images and other resources
   public void preload() {
@@ -55,10 +55,10 @@ public class StarScene extends Renderable {
   }
 
   class Star {
-    public int x;
-    public int y;
-    public int speed;
-    public Star(int x, int y, int speed) {
+    int x;
+    int y;
+    int speed;
+    Star(int x, int y, int speed) {
       this.x = x;
       this.y = y;
       this.speed = speed;

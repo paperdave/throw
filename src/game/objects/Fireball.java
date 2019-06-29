@@ -4,7 +4,6 @@ import davecode.util.MathUtil;
 import davecode.util.RandomUtil;
 import game.main.*;
 import game.main.Level.Block;
-import game.main.Window;
 import game.scenes.GameScene;
 import game.scenes.RootScene;
 
@@ -14,26 +13,27 @@ import static game.scenes.GameScene.*;
 
 // This is just a template
 public class Fireball extends GameItem {
-  public int angle = 0;
+  private int angle = 0;
 
-  public int time = 0;
+  private int time = 0;
 
-  public double x = 0;
-  public double y = 0;
+  private double x = 0;
+  private double y = 0;
 
-  public float xOffset = 0;
-  public float xSpeed = 0;
-  public float ySpeed = 0;
+  private float xOffset = 0;
+  private float xSpeed = 0;
+  private float ySpeed = 0;
 
-  public double targetX = 0;
-  public double targetY = 0;
-  public float scale = 0;
+  private double targetX = 0;
+  private double targetY = 0;
+  private float scale = 0;
 
-  public boolean failedExplodeCheck = false;
+  private boolean failedExplodeCheck = false;
 
-  public float z = -14f;
-  public float zSpeed = -14f;
+  private float z = -14f;
+  private float zSpeed = -14f;
 
+  @SuppressWarnings("unused") // Required for Resource Preloader
   public Fireball() {}
   public Fireball(double x, double y, float targetX, float targetY) {
     this.x = x;
@@ -177,7 +177,6 @@ public class Fireball extends GameItem {
         }
 
         if(RootScene.instance.currentScene instanceof GameScene) {
-          Renderable scene = RootScene.instance.currentScene;
           for (Player player : gameScene.players) {
             float xPos = (float) X_OFFSET + Math.round(player.x);
             float yPos = (float) Y_OFFSET + Math.round(player.y);

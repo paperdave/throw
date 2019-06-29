@@ -17,38 +17,37 @@ import java.util.ArrayList;
 
 // The Main Menu
 public class MainMenu extends Renderable {
-  static final int TUTORIAL_FADE_LEN = 80;
-  static final int TUTORIAL_TOTAL_LEN = 180;
-  String[] tutorial = {
+  private static final int TUTORIAL_FADE_LEN = 80;
+  private static final int TUTORIAL_TOTAL_LEN = 180;
+  private final String[] tutorial = {
     "Use the Left Stick to move",
     "Use the Right Stick to aim",
     "Press the Right Stick to shoot!",
     "Hold A to Join the Game",
   };
-  public int tutorialText = 0;
-  public int tutorialCooldown = TUTORIAL_TOTAL_LEN;
-  public float tutorialFade = 1f;
+  private int tutorialText = 0;
+  private int tutorialCooldown = TUTORIAL_TOTAL_LEN;
+  private float tutorialFade = 1f;
 
-  Player.Info[] metadata = new Player.Info[4];
-  boolean isInGame[] = new boolean[4];
-  float scales[] = {6f,6f,6f,6f};
+  private final Player.Info[] metadata = new Player.Info[4];
+  private final boolean[] isInGame = new boolean[4];
 
-  ArrayList<MenuParticle> particles = new ArrayList<>();
-  ArrayList<MenuParticle> particles2 = new ArrayList<>();
+  private final ArrayList<MenuParticle> particles = new ArrayList<>();
+  private final ArrayList<MenuParticle> particles2 = new ArrayList<>();
 
-  boolean pressingLB[] = new boolean[4];
-  boolean pressingLT[] = new boolean[4];
-  boolean pressingRB[] = new boolean[4];
-  boolean pressingRT[] = new boolean[4];
+  private final boolean[] pressingLB = new boolean[4];
+  private final boolean[] pressingLT = new boolean[4];
+  private final boolean[] pressingRB = new boolean[4];
+  private final boolean[] pressingRT = new boolean[4];
 
   private static final float MAX_COOLDOWN = 1.25f * 60;
-  float cooldown = 0;
+  private float cooldown = 0;
 
-  boolean started = false;
+  private boolean started = false;
 
-  float transition = 0;
+  private float transition = 0;
 
-  float angle = 0;
+  private float angle = 0;
 
   public void preload() {
     loadImage("playerbody1gs");
@@ -171,7 +170,7 @@ public class MainMenu extends Renderable {
     window.translate(0, (1-transition) * (Window.HEIGHT / 2) - sin);
   }
 
-  public void tickParticles() {
+  private void tickParticles() {
     int count = 1 + (RandomUtil.randomInt(1, 4) == 1 ? 1 : 0);
     for (int i = 0; i < count; i++) {
       particles2.add((MenuParticle) createRenderable(new MenuParticle(Window.WIDTH/2, 282)));

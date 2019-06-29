@@ -3,6 +3,7 @@ package davecode.log;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+@SuppressWarnings("ALL")
 public class Logger {
 	private static final SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
 	

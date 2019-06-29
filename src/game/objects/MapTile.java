@@ -12,6 +12,7 @@ import java.awt.Point;
 public class MapTile extends GameItem {
   private Block block;
 
+  @SuppressWarnings("unused") // Required for Resource Preloader
   public MapTile() { }
   public MapTile(Block block) {
     this.block = block;

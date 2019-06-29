@@ -3,12 +3,10 @@ package game.main;
 import com.github.strikerx3.jxinput.enums.XInputButton;
 import davecode.controller.XInputManager;
 import davecode.log.Logger;
-import davecode.util.GameLoop;
 import davecode.util.MathUtil;
 import davecode.util.RandomUtil;
 import game.scenes.GameScene;
 import game.scenes.LoadingScene;
-import game.scenes.RootScene;
 import org.reflections.Reflections;
 import processing.core.PApplet;
 import processing.core.PFont;
@@ -18,7 +16,6 @@ import java.lang.reflect.Modifier;
 import java.util.Set;
 
 public class Window extends PApplet {
-  public boolean isFullscreen = true;
 
   public static float WIDTH = 1280;
   public static float HEIGHT = 720;
@@ -26,19 +23,17 @@ public class Window extends PApplet {
   // Singleton
   public static Window instance;
   private PFont font;
-  private GameLoop loop;
 
-  long lastTime = System.nanoTime();
-  double ns = 1000000000 / 60;
-  double delta = 0;
+  private long lastTime = System.nanoTime();
+  private double delta = 0;
 
-  int fps = 0;
-  int ups = 0;
-  int frames = 0;
-  int updates = 0;
-  long oneSecondAgo = System.currentTimeMillis();
-  int exitCooldown = 0;
-  float exitVIN = 0;
+  private int fps = 0;
+  private int ups = 0;
+  private int frames = 0;
+  private int updates = 0;
+  private long oneSecondAgo = System.currentTimeMillis();
+  private int exitCooldown = 0;
+  private float exitVIN = 0;
   private Thread preloadThread;
 
   public Window() {
@@ -48,7 +43,7 @@ public class Window extends PApplet {
   // Vars
   public Renderable scene;
 
-  private boolean isPressingReset = false;
+//  private boolean isPressingReset = false;
 
   // Window Settings
   public void settings() {
@@ -57,6 +52,8 @@ public class Window extends PApplet {
     // Size
     size(1280, 720);
     // full
+    boolean isFullscreen = true;
+    //noinspection ConstantConditions
     if(isFullscreen) {
       WIDTH = displayWidth;
       HEIGHT = displayHeight;
@@ -92,11 +89,9 @@ public class Window extends PApplet {
       Set<Class<? extends Renderable>> classes = reflections.getSubTypesOf(Renderable.class);
       for (Class<? extends Renderable> aClass : classes) {
         try {
-
-          Logger.info("Preloading " + aClass.getName());
-
           if(!Modifier.isAbstract(aClass.getModifiers())) {
-            Renderable renderable = aClass.newInstance();
+            Logger.info("Preloading " + aClass.getName());
+            Renderable renderable = aClass.getDeclaredConstructor().newInstance();
             renderable.preload();
           }
         } catch (Exception e) {
@@ -120,6 +115,7 @@ public class Window extends PApplet {
 
   public void draw() {
     long now = System.nanoTime();
+    double ns = 1000000000 / 60;
     delta += (now - lastTime) / ns;
 
     while (delta >= 1) {
@@ -144,7 +140,7 @@ public class Window extends PApplet {
     actualDraw();
   }
 
-  public void actualDraw() {
+  private void actualDraw() {
     // Font
     textFont(font, 24);
 
@@ -204,7 +200,7 @@ public class Window extends PApplet {
     }
   }
 
-  public void actualUpdate() {
+  private void actualUpdate() {
     scene.update();
 
     shakeRemain = Math.max(0.0f, shakeRemain - ((1 / shakeLength) * shakeMagnitude));
@@ -237,13 +233,10 @@ public class Window extends PApplet {
   public void imageScaled(PImage img, float x, float y, float scale) {
     image(img, x, y, img.width * scale, img.height * scale);
   }
-  public void imageScaled(PImage img, double x, double y, float scale) {
-    image(img, (float)x, (float)y, img.width * scale, img.height * 2);
-  }
 
-  float shakeMagnitude = 1f;
-  float shakeLength = 1f;
-  float shakeRemain = 0f;
+  private float shakeMagnitude = 1f;
+  private float shakeLength = 1f;
+  private float shakeRemain = 0f;
 
   public void shake(float magnitude, int frames) {
     shakeMagnitude = Math.max(shakeRemain, magnitude);
@@ -260,10 +253,17 @@ public class Window extends PApplet {
   }
 
   public void stop() {
-    // always close Minim audio classes when you are done with them
     super.stop();
+
+    Logger.info("Shutting Down");
+
+    ResourceManager.end();
+
     try {
       preloadThread.join();
-    } catch (InterruptedException e) {}
+    } catch (InterruptedException ignored) {}
+
+    XInputManager.stopThread();
+
   }
 }

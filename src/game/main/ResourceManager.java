@@ -7,13 +7,11 @@ import ddf.minim.ugens.Sampler;
 import processing.core.PImage;
 
 import java.util.HashMap;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class ResourceManager {
   private static Minim minim;
 
-  private static HashMap<String, Resource> registry = new HashMap<>();
+  private static final HashMap<String, Resource> registry = new HashMap<>();
 
   public static void setup() {
     minim = new Minim(Window.instance);
@@ -26,20 +24,20 @@ public class ResourceManager {
   }
 
   private static class Resource {
-    ResourceType type;
+    final ResourceType type;
     PImage image = null;
     Sampler sound = null;
     AudioPlayer music = null;
 
-    public Resource(PImage image) {
+    Resource(PImage image) {
       this.type = ResourceType.IMAGE;
       this.image = image;
     }
-    public Resource(Sampler sound) {
+    Resource(Sampler sound) {
       this.type = ResourceType.SOUND;
       this.sound = sound;
     }
-    public Resource(AudioPlayer music) {
+    Resource(AudioPlayer music) {
       this.type = ResourceType.MUSIC;
       this.music = music;
     }
@@ -118,6 +116,7 @@ public class ResourceManager {
     }
   }
 
+  @SuppressWarnings("unused") // Used in reset trigger, which was removed. I want to keep this though.
   public static void stopAllSounds() {
     for (Resource resource: registry.values()) {
       if(resource.sound != null) {
@@ -136,6 +135,10 @@ public class ResourceManager {
         resource.music.rewind();
       }
     }
+  }
+  public static void end() {
+    stopAllSounds();
+    minim.dispose();
   }
 }
 

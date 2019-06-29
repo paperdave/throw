@@ -1,7 +1,7 @@
 package game.main;
 
 public class MusicBeat {
-  private static int[] beatTimes = {
+  private static final int[] beatTimes = {
     // Music 1
     22,
     // Music 2

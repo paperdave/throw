@@ -9,21 +9,20 @@ import java.awt.Color;
 
 // Player Explody Bits
 public class PlayerDust extends GameItem {
-  private boolean failedExplodeCheck = false;
 
-  public float x;
-  public float y;
-  public float z;
-  public float mx;
-  public float mmx = 0.85f;
-  public float my;
-  public float mz;
-  public float mmz = -0.075f;
-  public Color color = new Color(0x5e461f);
-  public int size;
-  public boolean dead = false;
-  public float opacity = 255f;
+  private float x;
+  private float y;
+  private float z;
+  private float mx;
+  private float mmx = 0.85f;
+  private float my;
+  private float mz;
+  private float mmz = -0.075f;
+  private Color color = new Color(0x5e461f);
+  private int size;
+  private boolean dead = false;
 
+  @SuppressWarnings("unused") // Required for Resource Preloader
   public PlayerDust() {}
   public PlayerDust(double x, double y, Color c) {
     this.x = (int) x;
@@ -54,6 +53,7 @@ public class PlayerDust extends GameItem {
     window.blendMode(window.ADD);
 
     window.noStroke();
+    float opacity = 255f;
     window.fill(color.getRed(), color.getGreen(), color.getBlue(), opacity);
     window.rect(-size/2f, -size/2f, size, size);
 

@@ -12,8 +12,8 @@ import davecode.log.Logger;
 
 public class XInputManager implements Runnable {
 	private static XInputDevice[] devices;
-	private static XInputButtons[] buttons = new XInputButtons[4];
-	private static XInputAxes[] axes = new XInputAxes[4];
+	private static final XInputButtons[] buttons = new XInputButtons[4];
+	private static final XInputAxes[] axes = new XInputAxes[4];
 	
 	// thread stuff
 	private static Thread thread;
@@ -80,6 +80,7 @@ public class XInputManager implements Runnable {
 	}
 	
 	// Getter Methods for all the stuff.
+	@SuppressWarnings("SuspiciousNameCombination") // 'y' should probably not be returned in 'getXInputButtonValue', except 'XInput' is a controller type.
 	private static boolean getXInputButtonValue(XInputButtons buttons, XInputButton button) {
 		switch(button) {
 			case A: return buttons.a;
@@ -96,7 +97,7 @@ public class XInputManager implements Runnable {
 			case RIGHT_SHOULDER: return buttons.rShoulder;
 			case RIGHT_THUMBSTICK: return buttons.rThumb;
 			case START: return buttons.start;
-			case LEFT_THUMBSTICK: return buttons.rThumb;
+			case LEFT_THUMBSTICK: return buttons.lThumb;
 			case UNKNOWN: return buttons.unknown;
 		}
 		return false;

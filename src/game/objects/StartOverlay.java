@@ -11,19 +11,19 @@ import java.awt.Color;
 public class StartOverlay extends GameItem {
   private static final int TIME_PER_FRAME = 24; //ish
 
-  public int time = TIME_PER_FRAME;
-  public int frame = 0;
+  private int time = TIME_PER_FRAME;
+  private int frame = 0;
 
-  float scale = 10f;
+  private float scale = 10f;
 
-  float opacity = 1f;
+  private float opacity = 1f;
 
-  public int red = colors[0].getRed();
-  public int green = colors[0].getGreen();
-  public int blue = colors[0].getBlue();
+  private int red = colors[0].getRed();
+  private int green = colors[0].getGreen();
+  private int blue = colors[0].getBlue();
 
-  public float xScale = 0.5f;
-  public float yScale = 1.2f;
+  private float xScale = 0.5f;
+  private float yScale = 1.2f;
 
   private static final Color[] colors = {
     new Color(255, 51, 0,255),
@@ -112,7 +112,6 @@ public class StartOverlay extends GameItem {
 
       frame++;
       if(frame == 3) {
-        xScale = 0.5f;
         yScale = 1f;
 
         time = 60;

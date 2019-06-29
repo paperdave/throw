@@ -1,7 +1,5 @@
 package game.scenes;
 
-import com.github.strikerx3.jxinput.XInputDevice;
-import davecode.controller.XInputManager;
 import game.main.Renderable;
 import game.main.Window;
 

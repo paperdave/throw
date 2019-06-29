@@ -4,26 +4,20 @@ import davecode.util.RandomUtil;
 import game.main.GameItem;
 import game.main.Window;
 
-import java.awt.Point;
 import java.awt.Color;
 
 // Player Explody Bits
 public class FireballParticle extends GameItem {
-  private boolean failedExplodeCheck = false;
 
-  public float x;
-  public float y;
-  public float z;
-  public float mx;
-  public float mmx = 0.85f;
-  public float my;
-  public float mz;
-  public float mmz = -0.075f;
-  public Color color = new Color(0xFF7B00);
-  public int size;
-  public boolean dead = false;
-  public float opacity = 1f;
+  private float x;
+  private float y;
+  private float z;
+  private final Color color = new Color(0xFF7B00);
+  private int size;
+  private boolean dead = false;
+  private float opacity = 1f;
 
+  @SuppressWarnings("unused") // Required for Resource Preloader
   public FireballParticle() {}
   public FireballParticle(double x, double y) {
     this.x = (float) (x + RandomUtil.randomFloat(0, 48) - 24f);

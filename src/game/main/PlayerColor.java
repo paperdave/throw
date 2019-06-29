@@ -1,13 +1,12 @@
 package game.main;
 
-import java.awt.Point;
 import java.awt.Color;
 
 public class PlayerColor {
-  public static final Color Player1Color = new Color(0xf93b31);
-  public static final Color Player2Color = new Color(0x1B76F9);
-  public static final Color Player3Color = new Color(0x20F907);
-  public static final Color Player4Color = new Color(0xFC00FF);
+  private static final Color Player1Color = new Color(0xf93b31);
+  private static final Color Player2Color = new Color(0x1B76F9);
+  private static final Color Player3Color = new Color(0x20F907);
+  private static final Color Player4Color = new Color(0xFC00FF);
 
   public static Color getPlayerColor(int id) {
     if(id == 0) return Player1Color;

@@ -6,12 +6,14 @@
         <element id="file-copy" path="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
       </element>
       <element id="module-output" name="Throw" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/lib/guava-18.0.jar" path-in-jar="/" />
+      <element id="directory" name="res">
+        <element id="dir-copy" path="$PROJECT_DIR$/res" />
+      </element>
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/annotations-2.0.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/guava-18.0.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/javassist-3.18.2-GA.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/jl1.0.1.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/jsminim.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/lib/jxinput-1.0.0-javadoc.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/jxinput-1.0.0.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/minim.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/mp3spi1.9.5.jar" path-in-jar="/" />
@@ -19,9 +21,6 @@
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/tritonus_aos.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/tritonus_share.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$PROJECT_DIR$/lib/processing-core.jar" path-in-jar="/" />
-      <element id="directory" name="res">
-        <element id="dir-copy" path="$PROJECT_DIR$/res" />
-      </element>
     </root>
   </artifact>
 </component>

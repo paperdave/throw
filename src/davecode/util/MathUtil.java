@@ -1,5 +1,6 @@
 package davecode.util;
 
+@SuppressWarnings("ALL")
 public class MathUtil {
   public static double lerp(int low, int hi, double perc) {
     return low + (hi - low) * perc;

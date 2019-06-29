@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="lib folder">
+  <library name="libraries">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/lib/annotations-2.0.1.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/guava-18.0.jar!/" />
@@ -12,6 +12,7 @@
       <root url="jar://$PROJECT_DIR$/lib/reflections-0.9.10.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/tritonus_aos.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/tritonus_share.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/processing-core.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$PROJECT_DIR$/lib/jxinput-1.0.0-javadoc.jar!/" />

@@ -1,24 +1,22 @@
 package game.scenes;
 
 import davecode.util.MathUtil;
-import game.main.GameItem;
 import game.main.Renderable;
 import game.main.Window;
 import game.objects.StartOverlay;
 
 public class TransitionToGame extends Renderable {
-  public TransitionToGame() {
+  @SuppressWarnings("unused") // Required for Resource Preloader
+  public TransitionToGame() { }
 
-  }
-
-  public Renderable menu;
+  private Renderable menu;
   public Renderable game;
-  public StartOverlay overlay;
+  private StartOverlay overlay;
 
-  public float transitionValue = 0;
-  public int transitionTime = 0;
+  private float transitionValue = 0;
+  private int transitionTime = 0;
 
-  public TransitionToGame(Renderable currentScene, Renderable newScene) {
+  private TransitionToGame(Renderable currentScene, Renderable newScene) {
     menu = currentScene;
     game = newScene;
   }

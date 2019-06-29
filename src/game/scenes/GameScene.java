@@ -51,20 +51,18 @@ public class GameScene extends Renderable {
     Y_OFFSET = (int) ((Math.round(HEIGHT) / 2f) - 12 * 16 + 16);
   }
 
-  public Level level;
-
+  @SuppressWarnings("unused") // Required for Resource Preloader
   public GameScene() {}
-
-  Player.InfoE[] initData;
-
   public GameScene(Player.InfoE[] metadata) {
     initData = metadata;
   }
 
-  public ArrayList<Player> players = new ArrayList<>();
+  private Player.InfoE[] initData;
 
-  public ArrayList<GameItem> layerBack = new ArrayList<>();
-  public ArrayList<GameItem> layerFront = new ArrayList<>();
+  public final ArrayList<Player> players = new ArrayList<>();
+
+  private final ArrayList<GameItem> layerBack = new ArrayList<>();
+  public final ArrayList<GameItem> layerFront = new ArrayList<>();
 
   public void preload() {
     loadMusic("music1");
@@ -75,17 +73,17 @@ public class GameScene extends Renderable {
     loadMusic("music6");
   }
 
-  public boolean hasFirstTick = false;
-  public boolean gameDone = false;
+  private boolean hasFirstTick = false;
+  private boolean gameDone = false;
 
-  public int musicID = RandomUtil.randomInt(1, 6);
-  public void firstTick() {
+  private final int musicID = RandomUtil.randomInt(1, 6);
+  private void firstTick() {
     MusicBeat.songID = musicID;
     playMusic("music" + musicID);
   }
 
   public void setup() {
-    level = new Level();
+    Level level = new Level();
     Level.currentLevel = level;
 
     for (int i = 0; i < 12; i++) {
@@ -133,14 +131,12 @@ public class GameScene extends Renderable {
   }
 
   public void draw() {
-    for (int i = 0; i < layerBack.size(); i++) {
-      GameItem item = layerBack.get(i);
+    for (GameItem item : layerBack) {
       item.draw();
     }
-    for (int i = 0; i < layerFront.size(); i++) {
-      GameItem item = layerFront.get(i);
+    for (GameItem item : layerFront) {
       item.draw();
-      if(item instanceof Player) {
+      if (item instanceof Player) {
         ((Player) item).postDraw();
       }
     }
@@ -226,9 +222,8 @@ public class GameScene extends Renderable {
     if(!gameDone) {
       int aliveCount = 0;
       Player lastStanding = null;
-      for (int i = 0; i < players.size(); i++) {
-        Player item = players.get(i);
-        if(!item.dead && !item.isFalling) {
+      for (Player item : players) {
+        if (!item.dead && !item.isFalling) {
           aliveCount++;
           lastStanding = item;
         }

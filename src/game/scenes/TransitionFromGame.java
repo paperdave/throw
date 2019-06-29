@@ -12,7 +12,7 @@ import java.awt.Color;
 // This is just a template
 public class TransitionFromGame extends Renderable {
 
-  static String getWinStr(int id) {
+  private static String getWinStr(int id) {
     String name = "Nobody";
     if(id == 0) name = "Red";
     if(id == 1) name = "Blue";
@@ -27,28 +27,29 @@ public class TransitionFromGame extends Renderable {
   private int winnerID;
   private Point center;
 
-  public int time = 0;
+  private int time = 0;
 
-  public float barsIn = 0f;
+  private float barsIn = 0f;
 
-  public float red = 0;
-  public float green = 0;
-  public float blue = 0;
-  public float opacity = 255;
+  private float red = 0;
+  private float green = 0;
+  private float blue = 0;
+  private float opacity = 255;
 
   public Renderable game;
-  public Renderable menu;
+  private Renderable menu;
   private float xo;
   private float yo;
   private float scale = 1f;
 
+  @SuppressWarnings("unused") // Required for Resource Preloader
   public TransitionFromGame() { }
 
   public static void transitionFrom(Point center, int winnerID) {
     Renderable scene = RootScene.instance.currentScene;
     RootScene.instance.currentScene = createRenderable(new TransitionFromGame(scene, createRenderable(new MainMenu()), center, winnerID));
   }
-  public TransitionFromGame(Renderable game, Renderable menu, Point center, int winnerID) {
+  private TransitionFromGame(Renderable game, Renderable menu, Point center, int winnerID) {
     this.game = game;
     this.menu = menu;
     this.center = center;

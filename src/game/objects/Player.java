@@ -3,16 +3,15 @@ package game.objects;
 import com.github.strikerx3.jxinput.enums.XInputAxis;
 import com.github.strikerx3.jxinput.enums.XInputButton;
 import davecode.controller.XInputManager;
-import davecode.log.Logger;
 import davecode.util.MathUtil;
 import davecode.util.RandomUtil;
 import game.main.*;
 import game.main.Level.Block;
-import game.main.Window;
 import game.scenes.GameScene;
 import processing.core.PImage;
 import java.awt.Point;
 import java.awt.Color;
+import java.util.Objects;
 
 import static game.scenes.GameScene.*;
 
@@ -20,23 +19,23 @@ import static game.scenes.GameScene.*;
 public class Player extends GameItem {
   public int playerID = 0;
 
-  public float animWalk = 0;
-  public int animBounceTime = 0;
+  private float animWalk = 0;
+  private int animBounceTime = 0;
 
   public double x = 0;
   public double y = 0;
-  public double lastX = 0;
-  public double lastY = 0;
-  public double z = 0;
-  public double lagX = 0;
-  public double lagY = 0;
+  private double lastX = 0;
+  private double lastY = 0;
+  private double z = 0;
+  private double lagX = 0;
+  private double lagY = 0;
   public Info info = new Info();
 
-  private final float maxSpeed = 4f;
-  public float speed = 0f;
+  private static final float maxSpeed = 4f;
+  private float speed = 0f;
 
   public boolean isFalling = false;
-  public double fallSpeed = 0;
+  private double fallSpeed = 0;
 
   public boolean isReadyThrow = false;
   private float targetX = 0;
@@ -47,7 +46,7 @@ public class Player extends GameItem {
   public int cooldown = 0;
   private float cooldownBarIn = 0;
 
-  public static final int MAX_COOLDOWN = (int)(2.2 * 60);
+  private static final int MAX_COOLDOWN = (int)(2.2 * 60);
 
   public int hp = 3;
   public float hpFlash = 0;
@@ -365,20 +364,12 @@ public class Player extends GameItem {
     public int body;
     public int shirt;
 
-    public Info() {
+    Info() {
       this(null, null);
     }
     public Info(Integer body, Integer shirt) {
-      if(body != null) {
-        this.body = body;
-      } else {
-        this.body = RandomUtil.randomInt(1, 5);
-      }
-      if(shirt != null) {
-        this.shirt = shirt;
-      } else {
-        this.shirt = RandomUtil.randomInt(1, 7);
-      }
+      this.body = Objects.requireNonNullElseGet(body, () -> RandomUtil.randomInt(1, 5));
+      this.shirt = Objects.requireNonNullElseGet(shirt, () -> RandomUtil.randomInt(1, 7));
     }
   }
 

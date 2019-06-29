@@ -6,7 +6,7 @@ import davecode.controller.XInputManager;
 import davecode.log.Logger;
 import processing.core.PApplet;
 
-public class Main {
+class Main {
   // Entry, Init
   public static void main(String[] args) {
     Logger.info("Starting Game...");

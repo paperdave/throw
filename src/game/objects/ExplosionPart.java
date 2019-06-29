@@ -12,7 +12,7 @@ import java.awt.Color;
 public class ExplosionPart extends GameItem {
   private boolean failedExplodeCheck = false;
 
-  public Color chooseRandomColor() {
+  private Color chooseRandomColor() {
     int id = RandomUtil.randomInt(0, 7);
     switch (id) {
       case 0: return new Color(0x383838);
@@ -28,19 +28,20 @@ public class ExplosionPart extends GameItem {
     throw new Error("Got " + id);
   }
 
-  public int angle;
-  public float x;
-  public float y;
-  public float z;
-  public float mx;
-  public float my;
-  public float mz;
-  public float ma;
-  public Color color = new Color(0x5e461f);
-  public int size;
-  public boolean dead = false;
-  public float opacity = 255f;
+  private int angle;
+  private float x;
+  private float y;
+  private float z;
+  private float mx;
+  private float my;
+  private float mz;
+  private float ma;
+  private Color color = new Color(0x5e461f);
+  private int size;
+  private boolean dead = false;
+  private float opacity = 255f;
 
+  @SuppressWarnings("unused") // Required for Resource Preloader
   public ExplosionPart() {}
   public ExplosionPart(double x, double y) {
     this.x = (int) x;

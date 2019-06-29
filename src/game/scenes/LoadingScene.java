@@ -7,9 +7,9 @@ import processing.core.PApplet;
 // This is just a template
 public class LoadingScene extends Renderable {
   public boolean isLoaded = false;
-  public int time = 0;
+  private int time = 0;
 
-  public int opacity = 0;
+  private int opacity = 0;
 
   public void preload() {
 
