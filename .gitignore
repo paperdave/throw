@@ -1,0 +1,11 @@
+# idea stuff
+.idea/dictionaries
+.idea/workspace.xml
+.idea/uiDesigner.xml
+.idea/project-template.xml
+
+# libraries
+lib
+
+# Output
+out

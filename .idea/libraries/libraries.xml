@@ -1,0 +1,24 @@
+<component name="libraryTable">
+  <library name="lib folder">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/annotations-2.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/guava-18.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javassist-3.18.2-GA.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jl1.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jsminim.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jxinput-1.0.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/minim.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/mp3spi1.9.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/reflections-0.9.10.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/tritonus_aos.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/tritonus_share.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/lib/jxinput-1.0.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/lib/annotations-2.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jl1.0.1.jar!/" />
+    </SOURCES>
+  </library>
+</component>
